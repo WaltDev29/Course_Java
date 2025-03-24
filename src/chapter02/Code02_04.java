@@ -1,3 +1,5 @@
+package chapter02;
+
 public class Code02_04 {
     public static void main(String[] args) {
         int a = 100;
