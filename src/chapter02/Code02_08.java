@@ -13,7 +13,6 @@ public class Code02_08 {
         System.out.printf("%s%s\n", str1, str2);
 
         String result = str1 + str2;
-
         System.out.println(result);
     }
 }
