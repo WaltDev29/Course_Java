@@ -15,7 +15,7 @@ public class Code04_15 {
         System.out.println(str2.charAt(1));
         System.out.println(str2.charAt(2));
         System.out.println(str2.charAt(3));
-        // System.out.println(str2.charAt(4));
+        // System.out.println(str2.charAt(4)); // 인덱스를 벗어나 오류
 
         // 인덱스 1부터 끝까지 출력
         System.out.println(str2.substring(1));
