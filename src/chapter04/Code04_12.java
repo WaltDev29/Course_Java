@@ -16,5 +16,14 @@ public class Code04_12 {
         System.out.println(str2);
         String str3 = str2.trim();
         System.out.println(str3);
+
+        // "" (Empty String): 공백도 없이 붙어 있는 문자열
+        String str4 = str2.replaceAll(" ","");
+        System.out.println(str4);
+
+        String str5 = str2.replace(" ","");
+        System.out.println(str5);
+        String str6 = str2.replaceFirst(" ","");
+        System.out.println(str6);
     }
 }
