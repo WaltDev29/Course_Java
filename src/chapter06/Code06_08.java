@@ -20,5 +20,6 @@ public class Code06_08 {
             System.out.printf("%d + %d = %d\n", num1, num2, sum);
         }
         System.out.println("\n프로그램 종료");
+        sc.close();
     }
 }
