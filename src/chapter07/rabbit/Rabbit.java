@@ -5,6 +5,18 @@ public class Rabbit {
     private int x;
     private int y;
 
+    public Rabbit() {
+        shape = "기본 토끼";
+        x = 10;
+        y = 10;
+    }
+
+    public Rabbit(String shape, int x, int y) {
+        this.shape = shape;
+        this.x = x;
+        this.y = y;
+    }
+
     public void setPosition(int x, int y) {
         this.x = x;
         this.y = y;
