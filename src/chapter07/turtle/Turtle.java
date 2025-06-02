@@ -1,4 +1,4 @@
-package chapter07;
+package chapter07.turtle;
 
 /**AUTHOR: NICHOLAS SEWARD
  * EMAIL: nicholas.seward@gmail.com
@@ -27,16 +27,16 @@ import javax.imageio.ImageIO;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
- * Turtle is a selfcontained class that will allow students to make
+     * Turtle is a selfcontained class that will allow students to make
  * beautiful turtle graphics with ease.
  *
  * @author Nicholas Seward
  */
 @SuppressWarnings("unchecked")
-public class Turtle implements Runnable, ActionListener, MouseListener, MouseMotionListener, KeyListener, ComponentListener, MouseWheelListener
+    public class Turtle implements Runnable, ActionListener, MouseListener, MouseMotionListener, KeyListener, ComponentListener, MouseWheelListener
 {
 
-    private static ArrayList<Turtle> turtles;
+        private static ArrayList<Turtle> turtles;
     private static TreeMap<Long,ArrayList> turtleStates;
     private static TreeMap<Long,ArrayList> redoStates;
     private static JFrame window;
@@ -48,11 +48,11 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
     private static BufferedImage backgroundImage;
     private static Color backgroundColor;
     private static ImageIcon icon;
-    private static Turtle turtle;
+        private static Turtle turtle;
     private static HashMap<String,Polygon> shapes;  //You can only add.  Never remove.
     private static HashMap<String, Color> colors;
     private static HashMap<String,ArrayList<ArrayList>> keyBindings;
-    private static HashMap<Turtle,ArrayList<ArrayList>> mouseBindings;
+        private static HashMap<Turtle,ArrayList<ArrayList>> mouseBindings;
     private static double centerX, centerY;
     private static double scale;
     private static TreeSet<String> keysDown;
@@ -73,7 +73,7 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
     private static final int BACKGROUND_MODE_CENTER_RELATIVE=3;
     private static final int BACKGROUND_MODE_TILE_RELATIVE=4;
     private static int backgroundMode;
-    private static Turtle selectedTurtle;
+            private static Turtle selectedTurtle;
     private static boolean running;
 
 
@@ -131,14 +131,14 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
     private static void init()
     {
         //mouseBindings.put(null, new ArrayList<ArrayList>());
-        turtles=new ArrayList<Turtle>();
+            turtles=new ArrayList<Turtle>();
         turtleStates=new TreeMap<Long,ArrayList>();
         redoStates=new TreeMap<Long,ArrayList>();
         width=500;
         height=500;
         backgroundColor=Color.WHITE;
         keyBindings=new HashMap<String,ArrayList<ArrayList>>();
-        mouseBindings=new HashMap<Turtle,ArrayList<ArrayList>>();
+            mouseBindings=new HashMap<Turtle,ArrayList<ArrayList>>();
         centerX=0;
         centerY=0;
         scale=1;
@@ -154,11 +154,11 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
         modifiers=0;
         refreshMode=REFRESH_MODE_ANIMATED;
         backgroundMode=BACKGROUND_MODE_TILE_RELATIVE;
-        selectedTurtle=null;
+            selectedTurtle=null;
         running=true;
 
 
-        window = new JFrame("Turtle");
+            window = new JFrame("Turtle");
         icon = new ImageIcon();
         setupBuffering();
         draw = new JLabel(icon);
@@ -178,10 +178,10 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
         window.setJMenuBar(menuBar);
         window.pack();
         window.requestFocusInWindow();
-        drawTurtleIcon();
+            drawTurtleIcon();
         window.setVisible(true);
         makeShapes();
-        turtle=new Turtle(0);
+            turtle=new Turtle(0);
         draw.setFocusable(true);
         menuItem1.addActionListener(turtle);
         window.addComponentListener(turtle);
@@ -215,7 +215,7 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
      * applets in the future.  For now, it doesn't work because the key and
      * mouse bindings require reflection and applets think that allowing
      * reflection would open a security hole.  Theoretically in the init method
-     * of the applet you need to place <code>Turtle.startApplet(this);</code>.
+         * of the applet you need to place <code>Turtle.startApplet(this);</code>.
      * <b>This is not currently working.</b>
      *
      * @param applet
@@ -225,7 +225,7 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
         //turtleStates.clear();
         //turtles.clear();
         //init();
-        Turtle.applet=applet;
+            Turtle.applet=applet;
         applet.setContentPane(window.getContentPane());
         window.setVisible(false);
         try{(new Thread((Runnable)applet,"turtle")).start();}
@@ -416,7 +416,7 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
         }
     }
 
-    private static void drawTurtleIcon()
+        private static void drawTurtleIcon()
     {
         byte[] imageData= new byte[]{71,73,70,56,57,97,16,0,16,0,-95,2,0,0,-103,
                 0,0,-1,0,-1,-1,-1,-1,-1,-1,33,-7,4,1,10,0,2,0,44,0,0,0,0,16,0,16,0,
@@ -478,11 +478,11 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
     /**
      * This is a internal constuctor that makes a singleton that does the
      * listening but is not added to the stack of turtles to be rendered.
-     * You don't need to use this outside of the Turtle.java file.
+         * You don't need to use this outside of the Turtle.java file.
      *
      * @param i Pass this any integer.  It doesn't do anything.
      */
-    private Turtle(int i){}
+        private Turtle(int i){}
 
     private Point2D.Double location=new Point2D.Double(0,0);
     private double direction=0; //degrees
@@ -560,7 +560,7 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
     /**
      * Makes a default turtle.
      */
-    public Turtle()
+        public Turtle()
     {
         if(window==null)init();
         synchronized(turtleLock){turtles.add(this);}
@@ -574,7 +574,7 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
      * @param x x coordinate
      * @param y y coordinate
      */
-    public Turtle(double x,double y)
+        public Turtle(double x,double y)
     {
         if(window==null)init();
         location=new Point2D.Double(x,y);
@@ -588,9 +588,9 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
      *
      * @return a cloned copy of a turtle
      */
-    public Turtle clone()
+        public Turtle clone()
     {
-        Turtle t=new Turtle(0);
+                Turtle t=new Turtle(0);
         t.location=(Point2D.Double)this.location.clone();
         t.direction=this.direction;
         t.shape=t.shape;
@@ -678,7 +678,7 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
     {
         synchronized(turtleLock)
         {
-            for(Turtle t:turtles)
+                for(Turtle t:turtles)
             {
                 t.__time=null;
                 t.__location=null;
@@ -736,7 +736,7 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
     {
         synchronized(turtleLock)
         {
-            Turtle t=getStateTurtle(turtleStates.get(time));
+                    Turtle t=getStateTurtle(turtleStates.get(time));
             t.__time=t._time;
             t.__location=t._location;
             t.__direction=t._direction;
@@ -790,7 +790,7 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
     }
 
     private static long getStateTime(ArrayList state){return (Long)state.get(0);}
-    private static Turtle getStateTurtle(ArrayList state){return (Turtle)state.get(1);}
+                private static Turtle getStateTurtle(ArrayList state){return (Turtle)state.get(1);}
     private static Point2D.Double getStateLocation(ArrayList state){return (Point2D.Double)((Point2D.Double)state.get(2)).clone();}
     private static double getStateDirection(ArrayList state){return (Double)state.get(3);}
     private static String getStateShape(ArrayList state){return (String)state.get(4);}
@@ -818,7 +818,7 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
     private static void restoreState(long time)
     {
         ArrayList state=turtleStates.get(time);
-        Turtle t=getStateTurtle(turtleStates.get(time));
+                Turtle t=getStateTurtle(turtleStates.get(time));
         t.location=getStateLocation(state);
         t.direction=getStateDirection(state);
         t.shape=getStateShape(state);
@@ -840,12 +840,12 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
 
     private void select()
     {
-        selectedTurtle=this;
+            selectedTurtle=this;
     }
 
     private void unselect()
     {
-        if (selectedTurtle==this) selectedTurtle=null;
+                if (selectedTurtle==this) selectedTurtle=null;
     }
 
     /**
@@ -1235,7 +1235,7 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
 
     public long stab()
     {
-        Color c=Turtle.getColor("red");
+            Color c=Turtle.getColor("red");
         if(c!=null)this.penColor=c;
         this.isPenDown=true;
         long timeStamp=storeCurrentState();
@@ -1250,7 +1250,7 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
      */
     public long penColor(String penColor)
     {
-        Color c=Turtle.getColor(penColor);
+            Color c=Turtle.getColor(penColor);
         if(c!=null)this.penColor=c;
         long timeStamp=storeCurrentState();
         return timeStamp;
@@ -1277,7 +1277,7 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
      */
     public long outlineColor(String outlineColor)
     {
-        Color c=Turtle.getColor(outlineColor);
+            Color c=Turtle.getColor(outlineColor);
         if(c!=null)this.outlineColor=c;
         long timeStamp=storeCurrentState();
         return timeStamp;
@@ -1304,7 +1304,7 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
      */
     public long fillColor(String fillColor)
     {
-        Color c=Turtle.getColor(fillColor);
+            Color c=Turtle.getColor(fillColor);
         if(c!=null)this.fillColor=c;
         long timeStamp=storeCurrentState();
         return timeStamp;
@@ -1392,7 +1392,7 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
      */
     public long dot(String color)
     {
-        Color c=Turtle.getColor(color);
+            Color c=Turtle.getColor(color);
         if(c==null)c=penColor;
         long timeStamp=storeCurrentState(true, false,penWidth*3,c,null,null,0,null);
         return timeStamp;
@@ -1419,7 +1419,7 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
      */
     public long dot(String color,double dotSize)
     {
-        Color c=Turtle.getColor(color);
+            Color c=Turtle.getColor(color);
         if(c==null)c=penColor;
         long timeStamp=storeCurrentState(true, false,dotSize,c,null,null,0,null);
         return timeStamp;
@@ -1501,7 +1501,7 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
             {
                 ArrayList state=entry.getValue();
                 long time=entry.getKey();
-                if(getStateTurtle(state)==this)
+                    if(getStateTurtle(state)==this)
                 {
                     if(removeKey!=0)
                     {
@@ -1530,7 +1530,7 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
             {
                 ArrayList state=entry.getValue();
                 long time=entry.getKey();
-                if(getStateTurtle(state)==this)
+                    if(getStateTurtle(state)==this)
                 {
                     if (steps==0)
                     {
@@ -1560,7 +1560,7 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
             {
                 ArrayList state=entry.getValue();
                 long time=entry.getKey();
-                if(getStateTurtle(state)==this)
+                    if(getStateTurtle(state)==this)
                 {
                     turtleStates.put(entry.getKey(), redoStates.remove(entry.getKey()));
                     restoreState(time);
@@ -1607,7 +1607,7 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
      */
     public static void bgcolor(String color)
     {
-        Color c=Turtle.getColor(color);
+            Color c=Turtle.getColor(color);
         if(c!=null)backgroundColor=c;
         if(refreshMode!=REFRESH_MODE_ON_DEMAND)updateAll();
     }
@@ -1635,7 +1635,7 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
         if(refreshMode!=REFRESH_MODE_ON_DEMAND)updateAll();
     }
 
-    private static boolean addMouseBinding(String methodName,Turtle t,boolean append,boolean click, boolean repeat)
+        private static boolean addMouseBinding(String methodName,Turtle t,boolean append,boolean click, boolean repeat)
     {
         String className="";
         try
@@ -1658,7 +1658,7 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
                     for(Class paramType : m.getParameterTypes())
                     {
                         //System.out.println(paramType.getName());
-                        if (!paramType.getName().equals("double") && !paramType.getName().equals("java.lang.Double") && !paramType.getName().equals("Turtle"))
+                            if (!paramType.getName().equals("double") && !paramType.getName().equals("java.lang.Double") && !paramType.getName().equals("Turtle"))
                         {
                             works=false;
                             break;
@@ -1717,7 +1717,7 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
                     for(Class paramType : m.getParameterTypes())
                     {
                         //System.out.println(paramType.getName());
-                        if (!paramType.getName().equals("java.lang.String") && !paramType.getName().equals("Turtle"))
+                            if (!paramType.getName().equals("java.lang.String") && !paramType.getName().equals("Turtle"))
                         {
                             works=false;
                             break;
@@ -1844,7 +1844,7 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
             {
                 double percent = 1 - (turtleStates.lastKey() - time) / getStateSpeed(turtleStates.lastEntry().getValue()) / 1000000.0;
                 //System.out.println("trying");
-                Turtle t=getStateTurtle(turtleStates.lastEntry().getValue());
+                        Turtle t=getStateTurtle(turtleStates.lastEntry().getValue());
                 double x1=t._location.x,y1=t._location.y,x2=t.__location.x,y2=t.__location.y;
                 x1=(x2-x1)*percent+x1;
                 y1=(y2-y1)*percent+y1;
@@ -1894,10 +1894,10 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
             if (lastUpdate>turtleStates.lastKey())
             {
                 midscreen.drawImage(offscreenImage,0,0, null);
-                for(Turtle t:turtles)
+                    for(Turtle t:turtles)
                 {
                     if(t.isVisible) t.drawStamp(1, midscreen);
-                    //if(t==selectedTurtle)t.drawCrossHairs(1,midscreen);
+                        //if(t==selectedTurtle)t.drawCrossHairs(1,midscreen);
                 }
                 onscreen.drawImage(midscreenImage,0,0, null);
                 window.repaint();
@@ -1907,47 +1907,47 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
             for (Map.Entry<Long, ArrayList> entry : turtleStates.tailMap(lastUpdate).headMap(renderTime).entrySet())
             {
                 retrieveState(entry.getKey());
-                Turtle t=getStateTurtle(entry.getValue());
+                        Turtle t=getStateTurtle(entry.getValue());
                 t.drawLine(1,offscreen);
                 if(t._isStamp)t.drawStamp(1, offscreen);
                 t.drawDot(1, offscreen);
             }
 
             midscreen.drawImage(offscreenImage,0,0, null);
-            Turtle animatedTurtle=null;
+                    Turtle animatedTurtle=null;
             double percent=1;
             Long t2;
             t2=new Long(0);
             if (renderTime<turtleStates.lastKey())
             {
-                animatedTurtle=getStateTurtle(turtleStates.ceilingEntry(renderTime).getValue());
-                t2=animatedTurtle._time;
+                        animatedTurtle=getStateTurtle(turtleStates.ceilingEntry(renderTime).getValue());
+                    t2=animatedTurtle._time;
                 retrieveState(turtleStates.ceilingKey(renderTime));
-                if(animatedTurtle._speed>0)
+                    if(animatedTurtle._speed>0)
                 {
-                    percent = 1 - (turtleStates.ceilingKey(renderTime) - renderTime) / animatedTurtle._speed / 1000000.0;
+                        percent = 1 - (turtleStates.ceilingKey(renderTime) - renderTime) / animatedTurtle._speed / 1000000.0;
                 }
                 else percent=1;
                 if (percent<0)percent=0;
             }
 
-            for(Turtle t:turtles)
+                for(Turtle t:turtles)
             {
-                if(t==animatedTurtle)
+                    if(t==animatedTurtle)
                 {
                     //System.out.println(percent);
                     t.drawLine(percent, midscreen);
                     if(t._dotSize>0)t.drawDot(percent, midscreen);
                     if(t.isVisible)t.drawStamp(percent, midscreen,false);
                     if(t._isStamp)t.drawStamp(percent, midscreen,true);
-                    //if(t==selectedTurtle)t.drawCrossHairs(percent,midscreen);
+                        //if(t==selectedTurtle)t.drawCrossHairs(percent,midscreen);
                     try{retrieveState(t2);}
                     catch(Exception e){}
                 }
                 else
                 {
                     if(t.isVisible)t.drawStamp(1, midscreen);
-                    //if(t==selectedTurtle)t.drawCrossHairs(1,midscreen);
+                        //if(t==selectedTurtle)t.drawCrossHairs(1,midscreen);
                 }
 
             }
@@ -2153,9 +2153,9 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
      */
     public static void setCanvasSize(int width,int height)
     {
-        Turtle.width=width;
-        Turtle.height=height;
-        Turtle.setupBuffering();
+            Turtle.width=width;
+            Turtle.height=height;
+            Turtle.setupBuffering();
         window.pack();
         updateAll();
     }
@@ -2203,7 +2203,7 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
      */
     public static void main(String[] a)
     {
-        //Turtle bob = new Turtle();
+                //Turtle bob = new Turtle();
         /*for(int i=0;i<360;i++)
         {
             bob.forward(i*1.25);
@@ -2211,7 +2211,7 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
         }
          */
         /*If you don't know what a for loop is yet this is equivalent to repeating the middle 4 lines 5 times in a row.*/
-        Turtle bob = new Turtle();
+                Turtle bob = new Turtle();
         bgcolor("lightblue");
         bob.penColor("red");
         bob.width(10);
@@ -2284,7 +2284,7 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
         modifiers+=e.getModifiers();
         synchronized (turtleLock)
         {
-            for(Turtle t:turtles)
+                for(Turtle t:turtles)
             {
                 if(t.contains(dragx,dragy))t.select();
                 else t.unselect();
@@ -2385,7 +2385,7 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
             {
                 for(ArrayList binding:keyBindings.get(keyText))
                 {
-                    Turtle t=(Turtle)binding.get(0);
+                            Turtle t=(Turtle)binding.get(0);
                     String className=(String)binding.get(1);
                     String methodName=(String)binding.get(2);
                     Boolean repeat=(Boolean)binding.get(3);
@@ -2627,7 +2627,7 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
             for (Map.Entry<Long, ArrayList> entry : turtleStates.entrySet())
             {
                 retrieveState(entry.getKey());
-                Turtle t=getStateTurtle(entry.getValue());
+                        Turtle t=getStateTurtle(entry.getValue());
                 i++;
                 if(i==1)continue;
                 if(t.__location!=null && !t.__location.equals(t._location))

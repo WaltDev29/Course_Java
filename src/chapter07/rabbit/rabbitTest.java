@@ -1,4 +1,4 @@
-package chapter07;
+package chapter07.rabbit;
 
 public class rabbitTest {
     public static void main(String[] args) {
@@ -10,7 +10,7 @@ public class rabbitTest {
         System.out.println(rb2);
         System.out.println(rb3);
 
-        rb1.setShape("둥글둥글");
+        rb1.shape = "둥글둥글";
         rb1.setPosition(10,10);
         rb2.setShape("네모네모");
         rb2.setPosition(30,30);

@@ -1,4 +1,4 @@
-package chapter07;
+package chapter07.car;
 
 // Alt + Insert (생성자, getter, setter 자동생성)
 public class Car {

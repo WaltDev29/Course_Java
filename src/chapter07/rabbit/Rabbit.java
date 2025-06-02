@@ -1,7 +1,7 @@
-package chapter07;
+package chapter07.rabbit;
 
 public class Rabbit {
-    private String shape;
+    public String shape;
     private int x;
     private int y;
 
