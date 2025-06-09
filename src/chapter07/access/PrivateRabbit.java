@@ -1,6 +1,6 @@
 package chapter07.access;
 
-public class Rabbit {
+public class PrivateRabbit {
     private String shape;
     private int x;
     private int y;
