@@ -1,4 +1,4 @@
-package chapter10;
+package chapter10_array;
 
 public class Code10_01 {
     public static void main(String[] args) {
