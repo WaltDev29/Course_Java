@@ -16,16 +16,19 @@ public class Lab01 {
         System.out.println("(종료 : q)");
         while (true) {
             System.out.print("첫 번째 숫자 : ");
-            n1 = numInput(sc);
-            System.out.print("두 번째 숫자 : ");
-            n2 = numInput(sc);
+            n1 = getNumber(sc);
             System.out.print("연산자 : ");
-            op = opInput(sc);
+            op = getInput(sc);
+            System.out.print("두 번째 숫자 : ");
+            n2 = getNumber(sc);
 
-            result = calc(n1,n2,op);
-
-            System.out.println("--- 계산 결과 ---");
-            System.out.printf("%d %c %d = %d\n\n", n1, op, n2, result);
+            try {
+                result = calc(n1, n2, op);
+                System.out.println("--- 계산 결과 ---");
+                System.out.printf("%d %c %d = %d\n\n", n1, op, n2, result);
+            } catch (ArithmeticException e) {
+                System.out.println("0으로 나눌 수 없습니다.");
+            }
         }
     }
 
@@ -50,25 +53,24 @@ public class Lab01 {
         return result;
     }
 
-    public static int numInput(Scanner sc) {
+    public static int getNumber(Scanner sc) {
         String inNum;   // 입력한 문자
         int num;    // 숫자로 변환
-        
+
         while (true) {
+            inNum = sc.nextLine();
+
+            // q를 입력하면 프로그램 종료
+            if (inNum.equalsIgnoreCase("Q")) {
+                System.out.printf("프로그램을 종료합니다.");
+                System.exit(0);
+            }
+
             try {
-                inNum = sc.nextLine();
-                
-                // q를 입력하면 프로그램 종료
-                if (inNum.equalsIgnoreCase("Q")) {
-                    System.out.printf("프로그램을 종료합니다.");
-                    System.exit(0);
-                }
-                
                 // 문자열을 숫자로 변환 (숫자가 아니면 catch에 걸림)
                 num = Integer.parseInt(inNum);
                 break;
-
-            } catch (Exception e) {
+            } catch (NumberFormatException e) {
                 System.out.println("\n숫자를 입력해주세요.");
                 System.out.print("다시 입력 : ");
             }
@@ -76,33 +78,27 @@ public class Lab01 {
         return num;
     }
 
-    public static char opInput(Scanner sc) {
+    public static char getInput(Scanner sc) {
         String inOp;    // 입력한 연산자
         char op;    // char로 형변환
-        List<String> ops = Arrays.asList("+","-","*","/");  // 사칙 연산인지 확인하기 위한 List
+        List<String> ops = Arrays.asList("+", "-", "*", "/");  // 사칙 연산인지 확인하기 위한 List
 
         while (true) {
-            try {
-                inOp = sc.nextLine();
-                
-                // 사칙 연산이 아닌 경우 continue
-                if (!ops.contains(inOp)) {
-                    System.out.println("\n+, -, *, / 중에서 입력해주세요");
-                    System.out.print("다시 입력 : ");
-                    continue;
-                }
-                
-                // q를 입력한 경우 프로그램 종료
-                if (inOp.equalsIgnoreCase("Q")) {
-                    System.out.printf("프로그램을 종료합니다.");
-                    System.exit(0);
-                }
-                break;
+            inOp = sc.nextLine();
 
-            } catch (Exception e) {
-                System.out.println("\n잘못된 값을 입력했습니다.");
-                System.out.print("다시 입력 : ");
+            // q를 입력한 경우 프로그램 종료
+            if (inOp.equalsIgnoreCase("Q")) {
+                System.out.printf("프로그램을 종료합니다.");
+                System.exit(0);
             }
+
+            // 사칙 연산이 아닌 경우 continue
+            if (!ops.contains(inOp)) {
+                System.out.println("\n+, -, *, / 중에서 입력해주세요");
+                System.out.print("다시 입력 : ");
+                continue;
+            }
+            break;
         }
         op = inOp.charAt(0);    // 입력한 연산자를 char형으로 변환
         return op;
