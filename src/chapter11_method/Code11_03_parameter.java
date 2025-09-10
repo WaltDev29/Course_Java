@@ -12,5 +12,6 @@ public class Code11_03_parameter {
         int n2 = sc.nextInt();
 
         System.out.printf("%d + %d = %d", n1, n2, calc.plus(n1,n2));
+        sc.close();
     }
 }
