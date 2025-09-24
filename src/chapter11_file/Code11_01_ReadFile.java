@@ -15,7 +15,7 @@ public class Code11_01_ReadFile {
         String line;
         BufferedReader br = null;
         try {
-            br = new BufferedReader(new FileReader("D:/course/javaFileTest/myData1.txt"));
+            br = new BufferedReader(new FileReader("D:/course/java/fileTest/myData1.txt"));
 
             while (true) {
                 line = br.readLine();

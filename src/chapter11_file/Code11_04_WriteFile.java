@@ -4,10 +4,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class Code_11_04_WriteFile {
+public class Code11_04_WriteFile {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        try (FileWriter fw = new FileWriter("D:/course/javaFileTest/myData2.txt")) {
+        try (FileWriter fw = new FileWriter("D:/course/java/fileTest/myData2.txt")) {
             System.out.println("저장할 내용을 입력하세요. (q : 종료)");
             String line = "";
             while (true) {

@@ -10,7 +10,7 @@ public class Code11_03_StringBuilder {
     public static void main(String[] args) {
         StringBuilder sb = new StringBuilder();
 
-        try (BufferedReader br = new BufferedReader(new FileReader("D:/course/javaFileTest/myData1.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("D:/course/java/fileTest/myData1.txt"))) {
             while (true) {
                 String line = br.readLine();
                 if (line == null) break;

@@ -7,7 +7,7 @@ import java.io.IOException;
 public class Code11_02_ReadFile {
     // throws를 사용한 방식
     public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader("D:/course/javaFileTest/myData1.txt"));
+        BufferedReader br = new BufferedReader(new FileReader("D:/course/java/fileTest/myData1.txt"));
 
             String line;
         int i = 1;
