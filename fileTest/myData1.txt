@@ -1,0 +1,6 @@
+자바 파일 입출력을 공부하고 있습니다.
+FileReader를 BufferedReader 객체로 생성합니다. 
+readLine() 메서드로 데이터를 한 행씩 읽어옵니다.
+이
+렇
+게
