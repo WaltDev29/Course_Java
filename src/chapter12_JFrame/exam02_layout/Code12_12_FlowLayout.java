@@ -1,4 +1,4 @@
-package chapter12_JFrame;
+package chapter12_JFrame.exam02_layout;
 
 import center_frame.CenterFrame;
 

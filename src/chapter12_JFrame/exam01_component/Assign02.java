@@ -1,4 +1,4 @@
-package chapter12_JFrame;
+package chapter12_JFrame.exam01_component;
 
 import javax.swing.*;
 import java.awt.*;

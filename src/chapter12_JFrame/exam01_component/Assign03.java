@@ -1,9 +1,8 @@
-package chapter12_JFrame;
+package chapter12_JFrame.exam01_component;
 
 import center_frame.CenterFrame;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class Assign03 extends JFrame {
