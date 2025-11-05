@@ -9,7 +9,7 @@ public class Code12_22_Draw extends JFrame {
     Code12_22_Draw() {
         DrawPanel dp = new DrawPanel();
 
-        setTitle("Mouse Point");
+        setTitle("Draw");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         CenterFrame cf = new CenterFrame(500,500);

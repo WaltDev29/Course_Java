@@ -12,7 +12,7 @@ public class Lab extends JFrame {
     DrawLine dl = new DrawLine();
 
     Lab() {
-        setTitle("Mouse Point");
+        setTitle("Draw Line Using Mouse");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         CenterFrame cf = new CenterFrame(500,500);
